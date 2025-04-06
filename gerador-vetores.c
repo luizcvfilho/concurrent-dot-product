@@ -8,7 +8,7 @@
 int main(int argc, char*argv[]){
     float *vetor1;
     float *vetor2;
-    double *vetorfinal;
+    double resultado;
     long int n;
     float elem;
     size_t ret;
@@ -22,8 +22,7 @@ int main(int argc, char*argv[]){
 
     vetor1 = (float *)malloc(sizeof(float) * n);
     vetor2 = (float *)malloc(sizeof(float) * n);
-    vetorfinal = (double *)malloc(sizeof(double) * n);
-    if (!vetor1 || !vetor2 || !vetorfinal) {
+    if (!vetor1 || !vetor2) {
         fprintf(stderr, "Erro de alocao da memoria dos vetores\n");
         return 2;
     }
@@ -36,7 +35,7 @@ int main(int argc, char*argv[]){
         elem = ((double)rand() / RAND_MAX) * MAX - (MAX / 2.0);
         vetor2[i] = elem;
 
-        vetorfinal[i] = vetor1[i] * vetor2[i];
+        resultado += vetor1[i] * vetor2[i];
     }
 
     arquivo = fopen("arquivo-vetores", "wb");
@@ -57,9 +56,9 @@ int main(int argc, char*argv[]){
         fprintf(stderr, "Erro de escrita do vetor 2 no  arquivo\n");
         return 4;
     }
-    ret = fwrite(vetorfinal, sizeof(double), n, arquivo);
-    if (ret < n) {
-        fprintf(stderr, "Erro de escrita do vetor final no  arquivo\n");
+    ret = fwrite(&resultado, sizeof(double), 1, arquivo);
+    if (ret < 1) {
+        fprintf(stderr, "Erro de escrita do resultado final no  arquivo\n");
         return 4;
     }
 
@@ -89,9 +88,9 @@ int main(int argc, char*argv[]){
         fprintf(stderr, "Erro de leitura do vetor 2 do arquivo\n");
         return 7;
     }
-    ret = fread(vetorfinal, sizeof(double), n, arquivo);
-    if (ret < n) {
-        fprintf(stderr, "Erro de leitura do vetor final do arquivo\n");
+    ret = fread(&resultado, sizeof(double), 1, arquivo);
+    if (ret < 1) {
+        fprintf(stderr, "Erro de leitura do resultado final do arquivo\n");
         return 7;
     }
 
@@ -109,15 +108,11 @@ int main(int argc, char*argv[]){
     }
     printf("\n");
 
-    printf("Vetor Final:\n");
-    for (long int i = 0; i < n; i++) {
-        printf("%.2f ", vetorfinal[i]);
-    }
+    printf("Resultado Final:\n %f", resultado);
     printf("\n");
 
     free(vetor1);
     free(vetor2);
-    free(vetorfinal);
     return 0;
 
 }

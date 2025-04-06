@@ -30,10 +30,12 @@ int main(int argc, char*argv[]){
 
     srand(time(NULL));
     for (long int i = 0; i < n; i++) {
-        elem = (rand() % MAX) / 3.0;
+        elem = ((double)rand() / RAND_MAX) * MAX - (MAX / 2.0);
         vetor1[i] = elem;
-        elem = (rand() % MAX) / 3.0;
+        
+        elem = ((double)rand() / RAND_MAX) * MAX - (MAX / 2.0);
         vetor2[i] = elem;
+
         vetorfinal[i] = vetor1[i] * vetor2[i];
     }
 
@@ -42,9 +44,9 @@ int main(int argc, char*argv[]){
         fprintf(stderr, "Erro de abertura do arquivo\n");
         return 3;
     }
-    // escreve a dimensao
+
     ret = fwrite(&n, sizeof(long int), 1, arquivo);
-    // escreve os elementos do vetor
+
     ret = fwrite(vetor1, sizeof(float), n, arquivo);
     if (ret < n) {
         fprintf(stderr, "Erro de escrita do vetor 1 no  arquivo\n");
@@ -74,6 +76,8 @@ int main(int argc, char*argv[]){
         fprintf(stderr, "Erro de leitura da dimensão do arquivo\n");
         return 6;
     }
+
+    printf("Vetores de dimensão %ld\n", n);
 
     ret = fread(vetor1, sizeof(float), n, arquivo);
     if (ret < n) {

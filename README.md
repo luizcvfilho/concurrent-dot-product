@@ -29,11 +29,11 @@ N = quantidade de números gerados em cada vetor
 ./gerador-vetores N
 ```
 
-### Executar `arquivo2.c`:
+### Executar `produto-interno-concorrente.c`:
 T = número de threads a serem usadas
 nome-arquivo = nome do arquivo binário que vai importar os valores
 ```bash
-./arquivo2 T nome-arquivo
+./produto-interno-concorrente T nome-arquivo
 ```
 
 ## Observações

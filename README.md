@@ -30,7 +30,8 @@ N = quantidade de números gerados em cada vetor
 ```
 
 ### Executar `produto-interno-concorrente.c`:
-T = número de threads a serem usadas
+T = número de threads a serem usadas  
+
 nome-arquivo = nome do arquivo binário que vai importar os valores
 ```bash
 ./produto-interno-concorrente T nome-arquivo

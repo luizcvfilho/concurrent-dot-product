@@ -8,7 +8,7 @@
 int main(int argc, char*argv[]){
     float *vetor1;
     float *vetor2;
-    float *vetorfinal;
+    double *vetorfinal;
     long int n;
     float elem;
     size_t ret;
@@ -22,7 +22,7 @@ int main(int argc, char*argv[]){
 
     vetor1 = (float *)malloc(sizeof(float) * n);
     vetor2 = (float *)malloc(sizeof(float) * n);
-    vetorfinal = (float *)malloc(sizeof(float) * n);
+    vetorfinal = (double *)malloc(sizeof(double) * n);
     if (!vetor1 || !vetor2 || !vetorfinal) {
         fprintf(stderr, "Erro de alocao da memoria dos vetores\n");
         return 2;
@@ -57,7 +57,7 @@ int main(int argc, char*argv[]){
         fprintf(stderr, "Erro de escrita do vetor 2 no  arquivo\n");
         return 4;
     }
-    ret = fwrite(vetorfinal, sizeof(float), n, arquivo);
+    ret = fwrite(vetorfinal, sizeof(double), n, arquivo);
     if (ret < n) {
         fprintf(stderr, "Erro de escrita do vetor final no  arquivo\n");
         return 4;
@@ -89,7 +89,7 @@ int main(int argc, char*argv[]){
         fprintf(stderr, "Erro de leitura do vetor 2 do arquivo\n");
         return 7;
     }
-    ret = fread(vetorfinal, sizeof(float), n, arquivo);
+    ret = fread(vetorfinal, sizeof(double), n, arquivo);
     if (ret < n) {
         fprintf(stderr, "Erro de leitura do vetor final do arquivo\n");
         return 7;

@@ -8,6 +8,9 @@ float *vetor1;
 float *vetor2;
 long int T;
 
+// Uncomment if you want to see the vector values
+// #define DEBUG
+
 void *ProdutoThread(void *tid){
     long int id = (long int) tid;
     long int start, fim, bloco;
@@ -113,6 +116,7 @@ int main(int argc, char*argv[]){
         free(produto);
     }
 
+    #ifdef DEBUG
     printf("Vetores lidos do arquivo: \n");
     printf("Vetor 1:\n");
     for (long int i = 0; i < n; i++) {
@@ -125,6 +129,7 @@ int main(int argc, char*argv[]){
         printf("%.2f ", vetor2[i]);
     }
     printf("\n");
+    #endif
 
     erro_relativo = fabs((valor_final_arquivo - valor_calculado) / valor_final_arquivo);
     printf("Produto interno concorrente: %lf\n", valor_calculado);

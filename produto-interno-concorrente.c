@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> 
+#include <math.h>
 #include <pthread.h>
 
 long int n;
@@ -125,10 +126,10 @@ int main(int argc, char*argv[]){
     }
     printf("\n");
 
-    erro_relativo = (valor_final_arquivo - valor_calculado) / valor_final_arquivo;
+    erro_relativo = fabs((valor_final_arquivo - valor_calculado) / valor_final_arquivo);
     printf("Produto interno concorrente: %lf\n", valor_calculado);
     printf("Produto interno sequencial: %lf\n", valor_final_arquivo);
-    printf("Erro relativo: %lf\n", erro_relativo);
+    printf("Erro relativo: %.30lf\n", erro_relativo);
 
     free(vetor1);
     free(vetor2);

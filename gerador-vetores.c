@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 1000
+#define MAX 100000
 
 // Uncomment if you want to see the vector values
 // #define DEBUG

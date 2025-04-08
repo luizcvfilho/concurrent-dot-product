@@ -6,7 +6,7 @@
 #define MAX 100000
 
 // Uncomment if you want to see the vector values
-// #define DEBUG
+// #define VECTORS
 
 int main(int argc, char*argv[]){
     float *vetor1;
@@ -100,7 +100,7 @@ int main(int argc, char*argv[]){
 
     fclose(arquivo);
 
-    #ifdef DEBUG
+    #ifdef VECTORS
     printf("Vetor 1:\n");
     for (long int i = 0; i < n; i++) {
         printf("%.2f ", vetor1[i]);

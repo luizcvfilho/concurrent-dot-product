@@ -9,7 +9,7 @@ float *vetor2;
 long int T;
 
 // Uncomment if you want to see the vector values
-// #define DEBUG
+// #define VECTORS
 
 void *ProdutoThread(void *tid){
     long int id = (long int) tid;
@@ -116,7 +116,7 @@ int main(int argc, char*argv[]){
         free(produto);
     }
 
-    #ifdef DEBUG
+    #ifdef VECTORS
     printf("Vetores lidos do arquivo: \n");
     printf("Vetor 1:\n");
     for (long int i = 0; i < n; i++) {

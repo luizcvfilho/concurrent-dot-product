@@ -14,8 +14,8 @@ int main(int argc, char*argv[]){
     size_t ret;
     FILE *arquivo;
 
-    if (argc < 2) {
-        fprintf(stderr, "Digite: %s <dimensao>\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Digite: %s <dimensao> <nome do arquivo gerado>\n", argv[0]);
         return 1;
     }
     n = atoi(argv[1]);
@@ -38,7 +38,8 @@ int main(int argc, char*argv[]){
         resultado += vetor1[i] * vetor2[i];
     }
 
-    arquivo = fopen("arquivo-vetores", "wb");
+    arquivo = fopen(argv[2], "wb");
+
     if (!arquivo) {
         fprintf(stderr, "Erro de abertura do arquivo\n");
         return 3;
@@ -64,7 +65,7 @@ int main(int argc, char*argv[]){
 
     fclose(arquivo);
 
-    arquivo = fopen("arquivo-vetores", "rb");
+    arquivo = fopen(argv[2], "rb");
     if (!arquivo) {
         fprintf(stderr, "Erro de abertura do arquivo para leitura\n");
         return 5;

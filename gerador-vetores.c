@@ -8,7 +8,7 @@
 int main(int argc, char*argv[]){
     float *vetor1;
     float *vetor2;
-    double resultado;
+    double resultado = 0.0;
     long int n;
     float elem;
     size_t ret;
